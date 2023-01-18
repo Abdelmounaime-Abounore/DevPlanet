@@ -1,0 +1,25 @@
+body {
+    background-image: url(../images/background.png);
+    height: 95vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; 
+}
+
+.container h1 {
+    color: hsl(231, 53%, 83%); 
+    font-family: 'Oswald Bold', bold, sans-serif";
+}
+
+#email_error {
+    display: none;
+}
+
+#password_error {
+    display: none;
+}
+
+a {
+    color: white;
+    cursor: pointer;
+}
