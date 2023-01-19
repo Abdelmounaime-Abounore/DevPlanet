@@ -14,7 +14,7 @@
   <!-- Section: Design Block -->
 <section class="bg_login">
   <div class="container px-5 text-center text-lg-start h-100">
-    <div class="row align-items-center mt-5">
+    <div class="row align-items-center mt-5 my-5">
       <div class="col-lg-6 mt-5">
         <h1 class="my-5 fw-bold">
         Wemcome to DEV Planet<br />

@@ -16,7 +16,7 @@ include_once './navbar.html';
 <div class="w-75 m-auto">
     <h5 class="text-center text-md-start">Total of Articles(3)</h5>
 </div>
-<div class="table-responsive">
+<div class="table-responsive my-5">
     <table class="table bg-light my-3 w-75 m-auto text-center">
         <tr>
             <th class="p-4">Title</th>
