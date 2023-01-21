@@ -1,6 +1,15 @@
 <?php
-include_once './navbar.html';
-?>
+    include_once "classes/Article.php";
+    session_start();
+    if (!isset($_SESSION["id"])){ 
+        header("Location:../index.php");
+        die;
+    }
+    $open_connexion=new conx();
+    $article =new Article();
+    $articles=$article->getArticles();
+    include_once './navbar.php';
+    ?>
 
 <h3>Articles Settings</h3>
 <div class="input-group d-flex justify-content-center my-5">
@@ -14,9 +23,15 @@ include_once './navbar.html';
     </button>
 </div>
 <div class="w-75 m-auto">
-    <h5 class="text-center text-md-start">Total of Articles(3)</h5>
+    <?php if($articles==false) $count_article=0;
+    else $count_article=count(($articles));
+     ?>
+    <h5 class="text-center text-md-start">Total of Articles(<?= $count_article ?>)</h5>
 </div>
 <div class="table-responsive my-5">
+    <?php if(isset($_GET['msg'])){ ?>
+        <h5><?= $_GET['msg'] ?></h5>
+    <?php } ?>
     <table class="table bg-light my-3 w-75 m-auto text-center">
         <tr>
             <th class="p-4">Title</th>
@@ -26,27 +41,15 @@ include_once './navbar.html';
             <th class="p-4">Delete</th>
         </tr>
         <tbody>
-      <tr>
-        <td class="p-4">Article</td>
-        <td class="p-4">06/09/1999</td>
-        <td class="p-4">Mbile developpment</td>
-        <td class="p-4"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update">Update</button></td>
-        <td class="p-4"><button type="button" class="btn btn-danger">Delete</button></td>
-      </tr>
-      <tr>
-        <td class="p-4">Article</td>
-        <td class="p-4">06/09/1999</td>
-        <td class="p-4">Mbile developpment</td>
-        <td class="p-4"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update">Update</button></td>
-        <td class="p-4"><button type="button" class="btn btn-danger">Delete</button></td>
-      </tr>
-      <tr>
-        <td class="p-4">Article</td>
-        <td class="p-4">06/09/1999</td>
-        <td class="p-4">Mbile developpment</td>
-        <td class="p-4"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update">Update</button></td>
-        <td class="p-4"><button type="button" class="btn btn-danger">Delete</button></td>
-      </tr>
+        <?php if($articles!=false){ foreach($articles as $art){ ?>
+        <tr>
+            <td class="p-4"><?= $art['title'] ?></td>
+            <td class="p-4"><?= $art["publishDate"] ?></td>
+            <td class="p-4"><?= $art["category"] ?></td>
+            <td class="p-4"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update">Update</button></td>
+            <td class="p-4"><a href="classes/traitement.php?action=delete_art&id=<?= $art['id'] ?>" class="btn btn-danger">Delete</a></td>
+        </tr>
+        <?php }} ?>
     </tbody>
   </table>
 </div>
@@ -80,13 +83,16 @@ include_once './navbar.html';
                         <textarea type="text" class="form-control" name="" id=""></textarea>
                         <!-- <textarea class="form-control" rows="10" name="description" id="task_description"></textarea> -->
                     </div>
+                </div>
             </form>
         </div>
     </div>
 </div>
 
 <?php require "./footer.php" ; ?>
-
+<script type="text/javascript">
+  history.pushState({},"","./dashboard.php");
+</script>
 
 
 <!-- <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button> -->

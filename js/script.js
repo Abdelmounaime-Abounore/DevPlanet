@@ -1,3 +1,5 @@
+// Dynamic Form
+
 const form = document.getElementById("myForm");
 const button = document.getElementById("duplicateButton");
 
@@ -6,3 +8,8 @@ button.addEventListener("click", function(){
     document.body.appendChild(formCopy);
     form.parentNode.insertBefore(formCopy,form.nextSibling) 
 })
+
+// _____________________________________________________________
+
+
+

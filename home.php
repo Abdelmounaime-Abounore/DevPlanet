@@ -1,23 +1,29 @@
     <?php
-    include_once './navbar.html';
+    include_once "classes/Article.php";
+    session_start();
+    if (!isset($_SESSION["id"])){ 
+        header("Location:../index.php");
+        die;
+    }
+    $open_connexion=new conx();
+    $article =new Article();
+    $articles=$article->getArticles();
+    include_once './navbar.php';
     ?>
     <h3>All development news articles</h3>
-    <div class="container my-5">
-        <div class="row my-3">
-            <div class="col-md-12">
-                <img src="./images/arc.png" class="img-fluid my-5">
-                <h2>Article Title</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id ipsum a magna convallis bibendum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id ipsum a magna convallis bibendum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id ipsum a magna convallis bibendum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id ipsum a magna convallis bibendum.</p>
-            </div>
-        </div>
-    </div>
+
+    <?php foreach($articles as $art){ ?>
         <div class="container my-5">
             <div class="row my-3">
                 <div class="col-md-12">
-                    <img src="./images/arc.png" class="img-fluid my-5">
-                    <h2>Article Title</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id ipsum a magna convallis bibendum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id ipsum a magna convallis bibendum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id ipsum a magna convallis bibendum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id ipsum a magna convallis bibendum.</p>
+                    <img src="./images/<?= $art["photo"] ?>" class="img-fluid my-5">
+                    <h2><?= $art['title'] ?></h2>
+                    <h5>Categorie : <?= $art["category"] ?></h2>
+                    <p><?= $art['description'] ?></p>
+                    
                 </div>
             </div>
         </div>
+    <?php } ?>
+        
 <?php require "./footer.php" ; ?>

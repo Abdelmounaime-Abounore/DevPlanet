@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if (isset($_SESSION["id"])) {
+  unset($_SESSION['id']); 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,41 +26,40 @@
         Wemcome to DEV Planet<br />
         </h1>
       </div>
-
       <div class="col-lg-6  mt-5 position-relative">
         <div class="card">
+          <?php if(isset($_GET['msg'])){ ?>
+          <h3 style="color: red;margin-top: 10px;margin-left: 10px;">Informatios inccorect</h3>
+          <?php } ?>
           <div class="card-body px-4 py-5 px-md-5 h-100">   
-            <form  method="post" action="" name="form">
+            <form  method="post" action="classes/traitement.php" name="form">
               <!-- User name input -->
               <div class="mb-4">
                 <label>E-mail</label>
                 <input type="email" id="email" class="form-control" name="email"/>
-                <div id="email_error" class="text-danger">*The fields cannot be blank</div>         
+                <div id="emailError" class="text-danger" style='display: none;'>*The fields cannot be blank</div>   
               </div>
                
               <!-- Password input -->
               <div class="mb-4">
                 <label>Password</label>
                 <input type="password" id="password" class="form-control" name="password"/>
-                <div id="password_error" class="text-danger">*The fields cannot be blank</div>         
+                <div id="passwordError" class="text-danger" style='display: none;'>*The fields cannot be blank</div>         
               </div>
 
               <!-- Submit button -->
-              <div class="d-flex justify-content-between">
-                <button type="submit" class="btn btn-info text-light btn-block p-2" onclick="validated(event)">
-                <a href="./home.php">Login</a>
-                </button>
-                <a href="signup.php">Sign Up</a>
-              </div>
+              <input type="hidden" name="action" value="login">
+              <button type="submit" class="btn btn-info text-light btn-block p-2" onclick="fullLoginInput(event)">
+                Login
+              </button>
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 </section>
 <!-- Section: Design Block -->
-
+<script src="./js/forms.js"></script>
 </body>
 </html>
