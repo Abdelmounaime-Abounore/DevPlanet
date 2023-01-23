@@ -29,10 +29,6 @@ include_once './navbar.php';
             <div id="categoryError" class="text-danger" style='display: none;'>*Select Your Category</div>
           </div>
           <div class="form-group my-3">
-            <label for="formGroupExampleInput2">Photo</label>
-            <input type="file" class="form-control p-2" id="formGroupExampleInput3" name="photo[]" required>
-          </div>
-          <div class="form-group my-3">
             <label for="formGroupExampleInput2">description</label>
             <textarea type="textarea" class="form-control p-2" name="description[]"></textarea>
             <div id="articleError" class="text-danger" style='display: none;'>*The fields cannot be blank</div>  

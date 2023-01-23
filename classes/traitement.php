@@ -1,6 +1,8 @@
 <?php
 include_once "admin.php";
 include_once "Article.php";
+include_once "conx.php";
+
 $open_connexion=new conx();
 session_start();
 if (isset($_POST["action"])) {
@@ -15,7 +17,6 @@ if (isset($_POST["action"])) {
 		} 
 		else { header('Location:../index.php?msg=user_existe_pas');die;}
 	}
-
 }
 if (isset($_GET["action"])) {
 
@@ -24,9 +25,21 @@ if (isset($_GET["action"])) {
 		$article=new Article();
         $article->id=$id;
 		$article->delete();
-		header('Location:../dashboard.php?msg=article deleted !!');
+		header('Location:../dashboard.php?msg=The article has been successfully deleted!');
 			die;
-	}
-	
+	}	
 }
+
+if($_POST['action']=='update'){
+	var_dump($_POST);
+	$id = $_POST['id'];
+		$title = $_POST['title'];
+		$category = $_POST['category'];
+		$description = $_POST['description'];
+	$article=new Article();
+	var_dump($article->update($id,$title,$category,$description));
+	
+	header('Location: ../dashboard.php');	
+	die;
+ }
  ?>

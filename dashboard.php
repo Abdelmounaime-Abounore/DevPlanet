@@ -46,48 +46,14 @@
             <td class="p-4"><?= $art['title'] ?></td>
             <td class="p-4"><?= $art["publishDate"] ?></td>
             <td class="p-4"><?= $art["category"] ?></td>
-            <td class="p-4"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update">Update</button></td>
-            <td class="p-4"><a href="classes/traitement.php?action=delete_art&id=<?= $art['id'] ?>" class="btn btn-danger">Delete</a></td>
+            <td class="p-4"> <a href="update.php?id=<?= $art['id']; ?>" class="btn btn-primary">Update</a></td>
+            <td class="p-4"> <a href="classes/traitement.php?action=delete_art&id=<?= $art['id'] ?>" class="btn btn-danger">Delete</a></td>
         </tr>
         <?php }} ?>
     </tbody>
   </table>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="" method="" action="" id="">
-                <div class="modal-header">
-                    <h5 class="modal-title">Article update</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label class="form-label">Title</label>
-                        <input type="text" class="form-control" name="" id=""/>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Category</label>
-                        <select class="form-select" name="" id="">
-                            <option value="">Please select</option>
-                        </select>
-                    </div>
-                    <div class="form-group my-3">
-                        <label class="for-label">Photo</label>
-                        <input type="file" class="form-control p-2" id="formGroupExampleInput3">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Article content</label>
-                        <textarea type="text" class="form-control" name="" id=""></textarea>
-                        <!-- <textarea class="form-control" rows="10" name="description" id="task_description"></textarea> -->
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 <?php require "./footer.php" ; ?>
 <script type="text/javascript">

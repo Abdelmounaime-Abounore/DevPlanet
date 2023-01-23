@@ -12,7 +12,7 @@ class conx
         try {
             if(self::$i==0){ 
                 self::$pdo = mysqli_connect("localhost:3306", "root", "", "devplanet");
-                 self::$i=1; }
+                self::$i=1; }
         } catch (\Throwable $th) {
            echo 'error :'.$th;
         }

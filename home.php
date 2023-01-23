@@ -15,13 +15,9 @@
     <?php foreach($articles as $art){ ?>
         <div class="container my-5">
             <div class="row my-3">
-                <div class="col-md-12">
-                    <img src="./images/<?= $art["photo"] ?>" class="img-fluid my-5">
-                    <h2><?= $art['title'] ?></h2>
-                    <h5>Categorie : <?= $art["category"] ?></h2>
-                    <p><?= $art['description'] ?></p>
-                    
-                </div>
+                <h2><?= $art['title'] ?></h2>
+                <h5>Categorie : <?= $art["category"] ?></h2>
+                <p><?= $art['description'] ?></p>   
             </div>
         </div>
     <?php } ?>
