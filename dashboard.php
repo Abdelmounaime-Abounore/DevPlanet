@@ -59,6 +59,3 @@
 <script type="text/javascript">
   history.pushState({},"","./dashboard.php");
 </script>
-
-
-<!-- <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button> -->

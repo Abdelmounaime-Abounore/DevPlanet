@@ -20,7 +20,7 @@ class Article
 		$this->category=$category;
 		$this->description=$description;
 	}
-
+    
 	public function fetchaArray($result){
 		$rows=array();
 		while($row = $result->fetch_assoc()) {
@@ -32,17 +32,24 @@ class Article
 		$res=conx::$pdo->query('INSERT INTO articles(title,authorID,category,photo,description) values("'.$this->title.'","'.$this->authorID.'","'.$this->category.'""'.$this->description.'") ');
 		return $res;
 	}
+
+	// Delete function
+
 	public function delete(){
 		$res=conx::$pdo->query("DELETE FROM articles where id='".$this->id."' ");
 		return $res;
 	}
+
+	// update function
+	
 	public function update($id,$title,$category,$description){
 		
 		$res = conx::$pdo->query("UPDATE `articles` set title='$title',category='$category',description='$description' WHERE id = '$id'");
-		// $exec = mysqli_query(conx::$pdo, $query);
-
 		return $res;
 	}
+
+	// select function
+
 	public function getArticles(){
 		$rech=conx::$pdo->query("select * from articles");
     	$tab=$this->fetchaArray($rech);

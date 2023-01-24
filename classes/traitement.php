@@ -17,6 +17,17 @@ if (isset($_POST["action"])) {
 		} 
 		else { header('Location:../index.php?msg=user_existe_pas');die;}
 	}
+
+	if($_POST['action']=='update'){
+		$id = $_POST['id'];
+			$title = $_POST['title'];
+			$category = $_POST['category'];
+			$description = $_POST['description'];
+		$article=new Article();
+		$article->update($id,$title,$category,$description);
+		header('Location: ../dashboard.php');	
+		die;
+	 }
 }
 if (isset($_GET["action"])) {
 
@@ -30,16 +41,4 @@ if (isset($_GET["action"])) {
 	}	
 }
 
-if($_POST['action']=='update'){
-	var_dump($_POST);
-	$id = $_POST['id'];
-		$title = $_POST['title'];
-		$category = $_POST['category'];
-		$description = $_POST['description'];
-	$article=new Article();
-	var_dump($article->update($id,$title,$category,$description));
-	
-	header('Location: ../dashboard.php');	
-	die;
- }
  ?>
